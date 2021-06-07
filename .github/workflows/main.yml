@@ -1,4 +1,4 @@
-name: vue-form-box
+name: vue-form-wrapper
 on:
   push:
     branches:
