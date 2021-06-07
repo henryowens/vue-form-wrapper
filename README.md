@@ -1,24 +1,47 @@
 # vue-form-wrapper
 
-## Project setup
+Wrapper component for managing form data easily. For & built with Vue 3.
+
+## Setup & Usage
+
+### 1. Install in your project
+
 ```
-yarn install
+npm i vue-form-wrapper
 ```
 
-### Compiles and hot-reloads for development
+### 2. Use it in your app
+
 ```
-yarn serve
+import { createApp } from 'vue'
+import App from '@/App.vue'
+
+import VueFormBox from "vue-form-box"
+
+createApp(App).use(VueFormBox).mount('#app')
 ```
 
-### Compiles and minifies for production
-```
-yarn build
-```
+### 3. Wrap your form!
 
-### Lints and fixes files
 ```
-yarn lint
-```
+<template>
+  <vue-form-wrapper :realtime="false" @form-item-change="formItemChange">
+    <h5>My Test Form</h5>
+    <p>Welcome to my test form</p>
+    <input ref="tempw3" type="text" value="my input" />
+    <input ref="tempw4" type="number" />
+  </vue-form-wrapper>
+</template>
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+<script lang="ts">
+import { Options, Vue } from "vue-class-component"
+import { FormItem } from "vue-form-box"
+
+@Options({})
+export default class App extends Vue {
+  public formItemChange(formItem: FormItem): void {
+    console.log(formItem);
+  }
+}
+</script>
+```
