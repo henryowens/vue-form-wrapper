@@ -27,15 +27,35 @@ export function useForms(): IForm {
     addingListeners();
   }
 
-  function isInputFields(el: HTMLElement) {
+  function isButtonType(el: HTMLInputElement): boolean {
+    if (el.type !== "button") return true;
+    return false;
+  }
+
+  function isInputFields(el: HTMLElement): boolean {
     if (
-      Object.values(HTMLInputTagName).includes(el.tagName as HTMLInputTagName)
+      Object.values(HTMLInputTagName).includes(
+        el.tagName as HTMLInputTagName
+      ) &&
+      !isButtonType(el as HTMLInputElement)
     )
       return true;
     return false;
   }
 
-  function update(ref: string, value: unknown) {
+  function isButton(el: HTMLElement): boolean {
+    if (el.tagName === "INPUT") {
+      if (isButtonType(el as HTMLInputElement)) {
+        return true;
+      }
+    } else if (el.tagName === "BUTTON") {
+      return true;
+    }
+
+    return false;
+  }
+
+  function update(ref: string, value: unknown): void {
     const index = state.formItems.findIndex(
       (formItem: FormItem) => formItem.ref === ref
     );
@@ -66,12 +86,19 @@ export function useForms(): IForm {
     }
   }
 
-  function getListener(): keyof HTMLElementEventMap {
-    if (vueContext.realtime) {
-      return "input";
-    } else {
-      return "change";
+  function getListener(
+    element: HTMLInputElement
+  ): keyof HTMLElementEventMap | undefined {
+    if (isInputFields(element)) {
+      if (vueContext.realtime) {
+        return "input";
+      } else {
+        return "change";
+      }
+    } else if (isButton(element)) {
+      return "click";
     }
+    return undefined;
   }
 
   function addingListeners(): void {
@@ -80,14 +107,18 @@ export function useForms(): IForm {
       : undefined;
     if (refs)
       for (const [key, element] of Object.entries(refs)) {
-        if (isInputFields(element))
-          element.addEventListener(getListener(), () => {
-            update(key, element.value);
-            vueContext.formItemChange({
-              ref: key,
-              value: element.value,
+        if (isInputFields(element) || isButton(element)) {
+          const listener = getListener(element);
+          if (listener) {
+            element.addEventListener(listener, () => {
+              update(key, element.value);
+              vueContext.formItemChange({
+                ref: key,
+                value: element.value,
+              });
             });
-          });
+          }
+        }
       }
   }
 
