@@ -25,3 +25,7 @@ pnpm-debug.log*
 # lock files
 *-lock.json
 *.lock
+
+# local dev files
+src/App.vue
+src/main.ts

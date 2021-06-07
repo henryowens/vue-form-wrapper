@@ -12,7 +12,7 @@ import { Options, prop, setup, Vue, WithDefault } from "vue-class-component";
 import { IForm, useForms } from "../composables/form";
 
 // models
-import { FormItem } from "../models/form";
+import { FormField } from "../models/form";
 
 class Props {
   realtime: WithDefault<boolean> = prop<boolean>({
@@ -29,12 +29,12 @@ export default class FormWrapper extends Vue.with(Props) {
     this.form.init(this);
   }
 
-  public formItemChange(formItem: FormItem): void {
-    this.$emit("form-item-change", formItem);
+  public formItemChange(formField: FormField): void {
+    this.$emit("form-item-change", formField);
   }
 
-  public formButtonClicked(): void {
-    this.$emit("form-button-clicked", this.form.state.formItems);
+  public formButtonClicked(formButtonPayload: any): void {
+    this.$emit("form-button-clicked", formButtonPayload);
   }
 }
 </script>

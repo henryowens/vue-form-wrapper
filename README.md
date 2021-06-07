@@ -35,12 +35,12 @@ createApp(App).use(VueFormBox).mount('#app')
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component"
-import { FormItem } from "vue-form-box"
+import { FormField } from "vue-form-box"
 
 @Options({})
 export default class App extends Vue {
-  public formItemChange(formItem: FormItem): void {
-    console.log(formItem);
+  public formItemChange(formField: FormField): void {
+    console.log(formField);
   }
 }
 </script>

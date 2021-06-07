@@ -1,6 +1,6 @@
 import { App } from "@vue/runtime-core";
 import components from "./components";
-import { FormItem } from "./models";
+import { FormField, FormButtonPayload } from "./models";
 
 export default {
   install: (app: App): void => {
@@ -8,4 +8,4 @@ export default {
   },
 };
 
-export { FormItem };
+export { FormField, FormButtonPayload };
