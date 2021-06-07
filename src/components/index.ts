@@ -2,7 +2,7 @@
 import { App } from "@vue/runtime-core";
 
 // components
-import FormWrapper from "@/components/FormWrapper.vue";
+import FormWrapper from "../components/FormWrapper.vue";
 
 export default {
   install: (app: App): void => {

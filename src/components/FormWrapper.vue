@@ -9,10 +9,10 @@
 import { Options, prop, setup, Vue, WithDefault } from "vue-class-component";
 
 // composables
-import { IForm, useForms } from "@/composables/form";
+import { IForm, useForms } from "../composables/form";
 
 // models
-import { FormItem } from "@/models/form";
+import { FormItem } from "../models/form";
 
 class Props {
   realtime: WithDefault<boolean> = prop<boolean>({

@@ -2,8 +2,8 @@
 import { reactive } from "@vue/reactivity";
 
 // models
-import { FormItem, FormItems, HTMLInputTagName } from "@/models/form";
-import { Refs } from "@/models/refs";
+import { FormItem, FormItems, HTMLInputTagName } from "../models/form";
+import { Refs } from "../models/refs";
 
 interface State {
   formItems: FormItems;
