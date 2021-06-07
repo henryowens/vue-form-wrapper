@@ -1,6 +1,6 @@
 {
   "name": "vue-form-wrapper",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "private": false,
   "scripts": {
     "build": "vue-cli-service build --target lib --name vue-form-data ./src/lib.ts",
