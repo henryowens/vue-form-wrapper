@@ -2,8 +2,8 @@
 import { reactive } from "@vue/reactivity";
 
 // models
-import { FormField, FormFields, HTMLInputTagName } from "@/models/form";
-import { Refs } from "@/models/refs";
+import { FormField, FormFields, HTMLInputTagName } from "../models/form";
+import { Refs } from "../models/refs";
 
 interface Button {
   ref: string;
