@@ -18,7 +18,7 @@ interface State {
 
 export interface IForm {
   state: State;
-  init: (vueCntxt: any) => void;
+  init: (vueCntxt: any) => FormFields;
 }
 
 export function useForms(): IForm {
@@ -29,10 +29,11 @@ export function useForms(): IForm {
     buttons: [],
   });
 
-  function init(vueCntxt: any): void {
+  function init(vueCntxt: any): FormFields {
     vueContext = vueCntxt;
     updateFormItems();
     addingListeners();
+    return state.formFields;
   }
 
   function isInputFields(el: HTMLElement) {
@@ -43,7 +44,7 @@ export function useForms(): IForm {
     return false;
   }
 
-  function update(ref: string, value: unknown) {
+  function update(ref: string, value: unknown, valid: boolean) {
     const index = state.formFields.findIndex(
       (formField: FormField) => formField.ref === ref
     );
@@ -54,6 +55,7 @@ export function useForms(): IForm {
       state.formFields.push({
         ref,
         value,
+        valid,
       });
     }
   }
@@ -78,6 +80,7 @@ export function useForms(): IForm {
           state.formFields.push({
             ref: key,
             value: element.value,
+            valid: element.validity.valid,
           });
       }
     }
@@ -114,10 +117,11 @@ export function useForms(): IForm {
           });
         } else if (isInputFields(element))
           element.addEventListener(getListener(), () => {
-            update(key, element.value);
+            update(key, element.value, element.validity.valid);
             vueContext.formItemChange({
               ref: key,
               value: element.value,
+              valid: element.validity.valid,
             });
           });
       }

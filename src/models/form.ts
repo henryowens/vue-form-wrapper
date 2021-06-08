@@ -1,6 +1,7 @@
 export interface FormField {
   ref: string;
   value: unknown;
+  valid: boolean;
 }
 
 export type FormFields = FormField[];
