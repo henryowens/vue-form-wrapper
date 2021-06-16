@@ -1,10 +1,10 @@
 {
   "name": "vue-form-wrapper",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name vue-form-data ./src/lib.ts",
+    "build": "vue-cli-service build --target lib --name vue-form-wrapper ./src/lib.ts",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
