@@ -11,7 +11,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build:types": "tsc --build typesconfig.json",
-    "build": "vue-cli-service build --target lib --name vue-form-wrapper --types types/index.d.ts",
+    "build": "vue-cli-service build --target lib --types types/index.d.ts",
     "lint": "vue-cli-service lint",
     "docs:setup": "cd ./docs && npm i",
     "docs:dev": "cd ./docs && npm run dev"
