@@ -5,7 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name vue-form-wrapper ./src/lib.ts",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "docs:setup": "cd ./docs && npm i",
+    "docs:dev": "cd ./docs && npm run dev"
   },
   "dependencies": {
     "core-js": "^3.6.5",
