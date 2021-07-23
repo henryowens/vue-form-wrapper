@@ -2,9 +2,16 @@
   "name": "vue-form-wrapper",
   "version": "1.2.8",
   "private": false,
+  "types": "types/index.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "types/*.d.ts"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name vue-form-wrapper ./src/lib.ts",
+    "build:types": "tsc --build typesconfig.json",
+    "build": "vue-cli-service build --target lib --name vue-form-wrapper --types types/index.d.ts",
     "lint": "vue-cli-service lint",
     "docs:setup": "cd ./docs && npm i",
     "docs:dev": "cd ./docs && npm run dev"
